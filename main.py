@@ -178,10 +178,10 @@ def lizhi():
         return ""
 
 #最美宋词
-def songci():
-    if (lizhi_API!="21487bd1942a2b1aee6502205ca3c334"):
+def zmsc():
+    if (zmsc_API!="21487bd1942a2b1aee6502205ca3c334"):
         conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
-        params = urllib.parse.urlencode({'key':songci_API})
+        params = urllib.parse.urlencode({'key':zmsc_API})
         headers = {'Content-type':'application/x-www-form-urlencoded'}
         conn.request('POST','/zmsc/index',params,headers)
         res = conn.getresponse()
@@ -282,8 +282,8 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
                 "color": get_color()
             },
 
-            "songci": {
-                "value": songci,
+            "zmsc": {
+                "value": zmsc,
                 "color": get_color()
             },
 
@@ -351,7 +351,7 @@ if __name__ == "__main__":
     #获取励志古言API
     lizhi_API=config["lizhi_API"]
     #最美宋词API
-    songci_API=config["songci_API"]
+    zmsc_API=config["zmsc_API"]
     #获取天气预报API
     tianqi_API=config["tianqi_API"]
     #是否启用词霸每日金句
@@ -373,7 +373,7 @@ if __name__ == "__main__":
     #励志名言
     lizhi = lizhi()
     #最美宋词
-    songci = songci()
+    zmsc = zmsc()
     #星座运势
     lucky_ = lucky()
     # 公众号推送消息
