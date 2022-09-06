@@ -118,7 +118,7 @@ def get_ciba():
 
 #彩虹屁
 def caihongpi():
-    if (caihongpi_API!="替换掉我"):
+    if (caihongpi_API!="21487bd1942a2b1aee6502205ca3c334"):
         conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
         params = urllib.parse.urlencode({'key':caihongpi_API})
         headers = {'Content-type':'application/x-www-form-urlencoded'}
@@ -135,7 +135,7 @@ def caihongpi():
 
 #健康小提示API
 def health():
-    if (health_API!="替换掉我"):
+    if (health_API!="21487bd1942a2b1aee6502205ca3c334"):
         conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
         params = urllib.parse.urlencode({'key':health_API})
         headers = {'Content-type':'application/x-www-form-urlencoded'}
@@ -150,7 +150,7 @@ def health():
 
 #星座运势
 def lucky():
-    if (lucky_API!="替换掉我"):
+    if (lucky_API!="21487bd1942a2b1aee6502205ca3c334"):
         conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
         params = urllib.parse.urlencode({'key':lucky_API,'astro':astro})
         headers = {'Content-type':'application/x-www-form-urlencoded'}
@@ -165,7 +165,7 @@ def lucky():
 
 #励志名言
 def lizhi():
-    if (lizhi_API!="替换掉我"):
+    if (lizhi_API!="21487bd1942a2b1aee6502205ca3c334"):
         conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
         params = urllib.parse.urlencode({'key':lizhi_API})
         headers = {'Content-type':'application/x-www-form-urlencoded'}
@@ -176,11 +176,24 @@ def lizhi():
         return data["newslist"][0]["saying"]
     else:
         return ""
-        
 
+#最美宋词
+def songci():
+    if (lizhi_API!="21487bd1942a2b1aee6502205ca3c334"):
+        conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
+        params = urllib.parse.urlencode({'key':songci_API})
+        headers = {'Content-type':'application/x-www-form-urlencoded'}
+        conn.request('POST','/zmsc/index',params,headers)
+        res = conn.getresponse()
+        data = res.read()
+        data = json.loads(data)
+        return data["newslist"][0]["content"]
+    else:
+        return ""
+        
 #下雨概率和建议
 def tip():
-    if (tianqi_API!="替换掉我"):
+    if (tianqi_API!="21487bd1942a2b1aee6502205ca3c334"):
         conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
         params = urllib.parse.urlencode({'key':tianqi_API,'city':city})
         headers = {'Content-type':'application/x-www-form-urlencoded'}
@@ -269,6 +282,11 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
                 "color": get_color()
             },
 
+            "songci": {
+                "value": songci,
+                "color": get_color()
+            },
+
             "pop": {
                 "value": pop,
                 "color": get_color()
@@ -332,6 +350,8 @@ if __name__ == "__main__":
     caihongpi_API=config["caihongpi_API"]
     #获取励志古言API
     lizhi_API=config["lizhi_API"]
+    #最美宋词API
+    songci_API=config["songci_API"]
     #获取天气预报API
     tianqi_API=config["tianqi_API"]
     #是否启用词霸每日金句
@@ -352,6 +372,8 @@ if __name__ == "__main__":
     pop,tips = tip()
     #励志名言
     lizhi = lizhi()
+    #最美宋词
+    songci = songci()
     #星座运势
     lucky_ = lucky()
     # 公众号推送消息
