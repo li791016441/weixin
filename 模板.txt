@@ -1,0 +1,17 @@
+{{date.DATA}} 
+城市：{{city.DATA}} 
+天气：{{weather.DATA}} 
+最低气温: {{min_temperature.DATA}} 
+最高气温: {{max_temperature.DATA}} 
+降雨概率：{{pop.DATA}}% 
+
+今天是咱们在一起的第{{love_day.DATA}}天 
+距离小陈生日还有{{birthday1.DATA}}天 
+距离小李生日还有{{birthday2.DATA}}天 
+
+每日英语：{{note_en.DATA}} {{note_ch.DATA}} 
+每日彩虹屁：{{pipi.DATA}} 
+健康小提示：{{health.DATA}} 
+
+星座运势
+{{lucky.DATA}}
